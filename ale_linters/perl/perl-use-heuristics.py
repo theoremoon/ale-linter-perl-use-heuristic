@@ -1,8 +1,6 @@
 import sys
 import re
 
-open("/tmp/a", "w").write("CALLED")
-
 package_pattern = r'(?P<package>(?:\w+::)*\w+)'
 
 using = set()
