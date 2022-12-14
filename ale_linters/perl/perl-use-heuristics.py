@@ -17,6 +17,14 @@ for row, line in enumerate(open(sys.argv[1])):
             if usage.group('package') not in using:
                 name = usage.group('package')
                 col = usage.span()[0]
+
+                # skip if it is in comment
+                if line.find("#", 0, col) != -1:
+                    continue
+
+                if name == "__PACKAGE__":
+                    continue
+
                 print('use of unused package {} at ({}, {})'.format(name, row+1, col))
                 print('> {}'.format(line))
                 print("")
